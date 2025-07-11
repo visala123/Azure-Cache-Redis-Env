@@ -12,4 +12,5 @@ module "redis" {
   redis_sku            = var.redis_sku
   non_ssl_port_enabled = var.non_ssl_port_enabled
   minimum_tls_version  = var.minimum_tls_version
+  tags                 = var.tags
 }

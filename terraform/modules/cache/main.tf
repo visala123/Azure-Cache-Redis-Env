@@ -12,7 +12,8 @@ resource "azurerm_redis_cache" "redis" {
   sku_name            = var.redis_sku
   non_ssl_port_enabled= var.non_ssl_port_enabled
   minimum_tls_version = var.minimum_tls_version
-  depends_on = [azurerm_resource_group.rg]
+  depends_on          = [azurerm_resource_group.rg]
+  tags                = var.tags
 
   redis_configuration {}
 }
