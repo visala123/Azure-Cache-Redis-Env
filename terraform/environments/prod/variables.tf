@@ -11,3 +11,7 @@ variable "non_ssl_port_enabled" {
 variable "minimum_tls_version" {
   default = "1.2"
 }
+variable "tags" {
+  type = map(string)
+  
+}
