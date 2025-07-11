@@ -1,4 +1,4 @@
-name: Terraform CosmosDB CI/CD
+name: Terraform Azure Cache for Redis CI/CD
 
 on:
   push:

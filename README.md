@@ -16,7 +16,7 @@ Terraform init/plan/apply
 
 Cost estimation using Infracost
 
-CI/CD triggers on main and stage branches
+CI/CD triggers on main(manual) and stage(automatic) branches
 
 ## Prerequisites
 Create a Remote Backend in Azure (Portal Steps)
