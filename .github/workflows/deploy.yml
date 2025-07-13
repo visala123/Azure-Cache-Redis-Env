@@ -22,10 +22,10 @@ jobs:
     #environment: ${{ github.event.inputs.environment }}-plan
     environment: ${{ github.event.inputs.environment || 'dev-plan' }}
     env:
-    #   ENV: ${{ github.event.inputs.environment || 'dev-plan' }}
-      defaults:
+      #ENV: ${{ github.event.inputs.environment || 'dev-plan' }}
+    defaults:
       run:
-        working-directory: terraform/environments/${{ github.event.inputs.environment || 'dev-plan'}}
+        working-directory: terraform/environments/${{ github.event.inputs.environment }}
     outputs:
       tfplan-exists: ${{ steps.tfplan.outputs.plan_created }}
 
@@ -102,10 +102,10 @@ jobs:
 
     environment: ${{ github.event.inputs.environment || 'dev' }}
     env:
-      ENV: ${{ github.event.inputs.environment || 'dev' }}
-      defaults:
+      #ENV: ${{ github.event.inputs.environment || 'dev' }}
+    defaults:
       run:
-        working-directory: terraform/environments/${{ github.event.inputs.environment || 'dev'}}
+        working-directory: terraform/environments/${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout code
