@@ -83,7 +83,7 @@ terraform/
       variables.tf
       terraform.tfvars
   modules/
-    cosmosdb/
+    cache/
       main.tf
       outputs.tf
       variables.tf
@@ -94,9 +94,9 @@ terraform/
 
 ##  Required Secrets in GitHub
 
-In your GitHub repo, go to **Settings → Secrets and Variables → Actions** and add:
+In your GitHub repo, go to **Settings → Environments → prod and dev->add Environment secrets** and add:
 
-AZURE_CREDENTIALS  and the value is in Json format
+1.AZURE_CREDENTIALS  and the value is in Json format
 
 ```
 {
@@ -112,29 +112,54 @@ How you get these : in shell run the command :
 ```
 # az ad sp create-for-rbac --name "<App registration name(Service Principal)>" --role Contributor --scopes /subscriptions/$(az account show --query id -o tsv) --sdk-auth
 ```
+
+In your GitHub repo, go to **Settings → Secrets & variables → Actions->New Repositorysecrets** and add
+
+2.INFRACOST_API_KEY  value get from the infracost.io site under Organization settings->API Token
+
 # Add Collaborators
 Go to your repo → Settings → Collaborators
+
 Click "Invite a collaborator"
+
 Enter your teammate’s GitHub username
+
 Choose appropriate access (usually Write or Admin)
+
 Send invite
+
 Note: If you're the owner, you cannot add yourself — you already have full access.
+
 # Add a GitHub Environment
+
 Go to Settings → Environments
+
 Click "New environment", name it dev-approval
+
 Under "Deployment protection rules", click "Required reviewers"
+
 Add your GitHub username (or a teammate)
 Click Save
+
 This will enforce manual approval before applying infrastructure.
 
 # Workflow
+in deployment.yml file choose the env either dev or prod under two pipelines plan and apply
+example:
+env:
+      ENV: ${{ github.event.inputs.environment || 'dev' }}
+
  Trigger on stage branch
+
 Automatically runs terraform init, plan, and Infracost report
 
 Skips apply step (for preview only)
 
  Trigger on main branch (Manual Approval)
-Go to Actions → Terraform Redis CI/CD → Run workflow
+
+Go to Actions → Terraform Azure Psql DB CI/CD → Run workflow
+
+Select the envronment prod or dev
 
 Enter input yes
 
