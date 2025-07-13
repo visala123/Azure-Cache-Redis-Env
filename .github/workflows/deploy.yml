@@ -19,9 +19,10 @@ jobs:
   plan:
     name: Terraform Plan and Cost Estimate
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment }}-plan
+    #environment: ${{ github.event.inputs.environment }}-plan
+    environment: ${{ github.event.inputs.environment || 'dev-plan' }}
     env:
-      ENV: ${{ github.event.inputs.environment || 'dev' }}
+      ENV: ${{ github.event.inputs.environment || 'dev-plan' }}
       defaults:
       run:
         working-directory: terraform/environments/${{ env.ENV }}
