@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     #environment: ${{ github.event.inputs.environment }}-plan
     environment: ${{ github.event.inputs.environment || 'dev-plan' }}
-    env:
+    #env:
       #ENV: ${{ github.event.inputs.environment || 'dev-plan' }}
     defaults:
       run:
@@ -101,7 +101,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.confirm_apply == 'yes'
 
     environment: ${{ github.event.inputs.environment || 'dev' }}
-    env:
+    #env:
       #ENV: ${{ github.event.inputs.environment || 'dev' }}
     defaults:
       run:
