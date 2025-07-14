@@ -94,7 +94,7 @@ terraform/
 
 ##  Required Secrets in GitHub
 
-In your GitHub repo, go to **Settings → Environments → prod and dev->add Environment secrets** and add:
+In your GitHub repo, go to **Settings → Environments → prod and dev ,dev-plan and prod-plan->add Environment secrets** and add:
 
 1.AZURE_CREDENTIALS  and the value is in Json format
 
@@ -112,8 +112,6 @@ How you get these : in shell run the command :
 ```
 # az ad sp create-for-rbac --name "<App registration name(Service Principal)>" --role Contributor --scopes /subscriptions/$(az account show --query id -o tsv) --sdk-auth
 ```
-
-In your GitHub repo, go to **Settings → Secrets & variables → Actions->New Repositorysecrets** and add
 
 2.INFRACOST_API_KEY  value get from the infracost.io site under Organization settings->API Token
 
